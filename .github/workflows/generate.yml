@@ -18,7 +18,7 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Javascript
+      - name: Checkout C
         uses: actions/checkout@v3
       - name: Checkout Gen
         run: |
@@ -48,9 +48,10 @@ jobs:
 
           export USERNAME=kubernetes
           EOF
+          export OUTPUT_DIR=../../kubernetes
           bash c.sh ../../kubernetes settings
-          popd
           cp settings ../../settings
+          popd
           rm -rf gen
       - name: Commit and push
         run: |
